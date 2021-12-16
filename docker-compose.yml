@@ -16,7 +16,7 @@ services:
     ports:
       - "5432:5432"
     networks:
-    - symfony-network
+      - symfony-network
 ###< doctrine/doctrine-bundle ###
 
   pgadmin:
@@ -27,12 +27,16 @@ services:
       PGADMIN_DEFAULT_PASSWORD: secret
       PGADMIN_LISTEN_PORT: 80
     ports:
-    - "5050:80"
+        - "5050:80"
     networks:
-    - symfony-network
+        - symfony-network
+    volumes:
+       - pgadmin:/var/lib/pgadmin:rw
+
 volumes:
 ###> doctrine/doctrine-bundle ###
   db-data:
+  pgadmin:
 ###< doctrine/doctrine-bundle ###
 
 networks:
